@@ -6,6 +6,8 @@ and runs them throught he first function. Then takes the response of that
 function, and runs it through each subsequent function in turn.
 */
 
+'use strict';
+
 function makeArray(args) {
   return Array.prototype.slice.apply(args);
 }
@@ -24,18 +26,14 @@ function add3(string) {
 }
 
 function pipe() {
-  var funcs = makeArray(arguments),
-      that = this;
+  var funcs = makeArray(arguments);
 
   return function() {
-    var args = makeArray(arguments),
-        output = args;
+    var getOutput = (output, func) => {
+      return func.apply(this, Array.prototype.concat.apply(output));
+    };
 
-    funcs.forEach(function(func) {
-      output = func.apply(that, Array.prototype.concat.apply(output));
-    });
-
-    return output;
+    return funcs.reduce(getOutput, makeArray(arguments));
   };
 }
 
