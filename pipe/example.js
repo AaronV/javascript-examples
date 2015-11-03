@@ -43,9 +43,9 @@ function pipe() {
   };
 }
 
-var firstInitial = pipe(firstName, firstLetter, add3);
+var firstInitial = pipe(firstName, firstLetter, add3),
+    name = "Mr. Aaron Vanderpoel";
 
-var name = "Mr. Aaron Vanderpoel";
 console.log(
-  "firstInitial: " + firstInitial(name)
+  "firstInitial: " + firstInitial(name) // "A three"
 );
