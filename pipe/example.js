@@ -27,10 +27,6 @@ function pipe() {
   var funcs = makeArray(arguments),
       that = this;
 
-  var getOutput = function(func, args) {
-    return func.apply(that, args);
-  };
-
   return function() {
     var args = makeArray(arguments),
         output = args;
