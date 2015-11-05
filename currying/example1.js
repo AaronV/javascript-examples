@@ -1,3 +1,5 @@
+'use strict';
+
 function makeArray(args) {
   return Array.prototype.slice.apply(args);
 }
