@@ -1,19 +1,36 @@
+// WIP
+
 'use strict';
 
 function makePromise() {
 
+  let waiting = [],
+      status = 'unresolved';
+
+  function vouch(func) {
+    if (status === 'unresolved') {
+      waiting.push(func);
+    } else {
+      func();
+    }
+  }
   function resolve() {
-    console.log(this);
+    status = 'resolved';
+    waiting.forEach((func) => {
+      try {
+        func();
+      } catch(e) {}
+    });
   }
 
   return {
     then: function(func) {
-
+      vouch(func);
     },
     resolve: function() {
       resolve();
     }
-  }
+  };
 }
 
 var p = makePromise();
