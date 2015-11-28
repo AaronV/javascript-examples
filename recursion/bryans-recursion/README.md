@@ -9,6 +9,8 @@ Flatten an array of arbitrary depth array's in depth-first order.
 depth=1 --> [1,2,3,[4,5],6]
 ```
 
+[Example](http://jsbin.com/lapitax/1/edit?js,console)
+
 ## Chat History:
 
 Bryan:
